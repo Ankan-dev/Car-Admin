@@ -84,13 +84,13 @@ app.get('/admin/all-user',async function (req,res) {
 
 //find all users with a particular condition
 
-app.get('/admin/all-conditioned-user',async function (req,res) {
+app.get('/admin/all-conditioned-user/:name',async function (req,res) {
 
     const name=req.params.name
-
+    console.log(name);
     try {
         const response= await UserModel.find({name});
-        if(response){
+        if(response.length!=0){
             res.json({
                 data:response,
                 success:true

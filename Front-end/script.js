@@ -16,7 +16,6 @@ async function getAllUser() {
         if (user) {
             for (let i = 0; i < user.data.length; i++) {
                 createRows(user.data[i].name, user.data[i].email, user.data[i].phone)
-                console.log(user)
             }
         } else {
             console.log(user)
@@ -90,15 +89,25 @@ async function addUser(){
 }
 
 
-//searching user by email
+//searching user by name
 
-async function searchByName(){
+async function searchByName(e){
+    e.preventDefault();
     let searchInp=document.querySelector("#search-inp").value
     try {
-        const response=await fetch("http://localhost:3000/admin/all-conditioned-user")
-        const data=await response.json();
-        if(data){
-            console.log(data);
+        const response=await fetch(`http://localhost:3000/admin/all-conditioned-user/${searchInp}`)
+        const responseData=await response.json();
+        if(responseData){
+            console.log(responseData);
+            document.querySelector("#result").style.display="none";
+            let output=document.querySelector("#output");
+            output.style.display="block";
+            for(let i=0;i<responseData.data.length;i++){
+                let personEmail=document.createElement("p");
+                personEmail.innerText=responseData.data[i].email;
+                output.appendChild(personEmail);
+                console.log(personEmail);
+            }
         }
     } catch (error) {
         console.log(error.message)

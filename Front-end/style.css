@@ -7,7 +7,7 @@
 
 body {
     display: flex;
-    height: 100vh;
+    min-height: 112vh;
 }
 
 .dashboard-container {
@@ -328,3 +328,19 @@ form .button input:hover {
   border: none;
   border-radius: 30px;
 }
+
+#output{
+  width: 50rem;
+  min-height: 50px;
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
